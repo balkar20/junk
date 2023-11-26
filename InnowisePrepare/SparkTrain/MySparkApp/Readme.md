@@ -1,0 +1,1 @@
+﻿spark-submit --class org.apache.spark.deploy.dotnet.DotnetRunner --master local microsoft-spark-3-0_2.12-2.1.1.jar dotnet MySparkApp.dll C:\Preparation\InnowisePrepare\SparkTrain\MySparkApp\input.txt

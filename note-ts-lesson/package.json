@@ -1,0 +1,17 @@
+{
+  "name": "note-ts-lesson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pm2-dev app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "pm2": "^5.3.0",
+    "typescript": "^5.2.2"
+  }
+}

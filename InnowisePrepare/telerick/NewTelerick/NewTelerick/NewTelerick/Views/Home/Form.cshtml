@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Form";
+}
+
+<div class="container-fluid">
+    <div class='row my-4'>
+        <div class='col-12 col-lg-9 border-right'>
+            <div class="row example-wrapper">
+                <div class="col-xs-12 col-sm-6 offset-sm-3 example-col">
+                    <div class="card">
+                        <div class="card-block m-5">
+                             @(Html.Kendo().Form<NewTelerick.Models.UserViewModel>()
+                                .Name("formExample")
+                                .HtmlAttributes(new { action = "Form", method = "POST" })
+                                .Validatable(v =>
+                                {
+                                    v.ValidateOnBlur(true);
+                                    v.ValidationSummary(vs => vs.Enable(false));
+                                })
+                                .Items(items =>
+                                {
+                                    items.AddGroup()
+                                        .Label("Registration Form")
+                                                .Items(i =>
+                                                {
+                                                    i.Add()
+                                                         .Field(f => f.FirstName)
+                                                         .Label(l => l.Text("First Name"));
+                                                    i.Add()
+                                                        .Field(f => f.LastName)
+                                                        .Label(l => l.Text("Last Name"));
+                                                    i.Add()
+                                                        .Field(f => f.Email)
+                                                        .Label(l => l.Text("Email *"));
+                                                    i.Add()
+                                                       .Field(f => f.Company)
+                                                       .Label(l => l.Text("Company").Optional(true));
+                                                });
+                                    items.AddGroup()
+                                        .Label("Credentials")
+                                            .Items(i=>
+                                            {
+                                                i.Add()
+                                                        .Field(f => f.UserName)
+                                                        .Label(l => l.Text("Username"));
+                                                i.Add()
+                                                    .Field(f => f.Password)
+                                                    .Label(l => l.Text("Password"))
+                                                    .InputHtmlAttributes(new { type = "password" })
+                                                    .Hint("Hint: enter alphanumeric characters only.");
+
+                                                i.Add()
+                                                    .Field(f => f.Agree)
+                                                    .Label(l => l.Text("Agree to Terms:"));
+                                            });
+                                })
+                            )
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class='col-12 col-lg-3 mt-3 mt-lg-0'>
+            <h3>Telerik UI for ASP.NET Core Form</h3>
+            <p>
+                The Telerik UI Form HtmlHelper for ASP.NET Core allows you to generate and manage forms. Through a variety of configuration options, it makes creating and customizing forms a seamless experience.
+            </p>
+            <p>
+                Achieve the desired form appearance by using default or custom editors, choose layout and orientation, display the editors in groups and columns, and configure validation.
+                @* </a>. *@
+            </p>
+        </div>
+    </div>
+</div>

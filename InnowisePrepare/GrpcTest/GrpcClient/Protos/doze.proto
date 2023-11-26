@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+package greet;
+
+// The greeting service definition.
+service Doze {
+  // Sends a greeting
+  rpc SayDoze (DozeRequest) returns (DozeReply);
+}
+
+// The request message containing the user's name.
+message DozeRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message DozeReply {
+  string message = 1;
+}

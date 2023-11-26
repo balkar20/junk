@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs"/>
+        <None Include="FsQuick1.fsx" />
+        <None Include="Example1.fsx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FsUnit.xUnit" Version="5.4.0" />
+      <PackageReference Include="xunit" Version="2.5.2-pre.2" />
+    </ItemGroup>
+
+</Project>

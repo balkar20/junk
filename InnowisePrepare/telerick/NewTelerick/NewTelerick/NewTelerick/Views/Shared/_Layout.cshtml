@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewTelerick</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link id="theme" rel="stylesheet" href="https://cdn.kendostatic.com/themes/7.0.1/material/material-main-dark.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://cdn.kendostatic.com/2023.3.1010/js/jszip.min.js"></script>
+	<script src="https://cdn.kendostatic.com/2023.3.1010/js/kendo.all.min.js"></script>
+	<script src="https://cdn.kendostatic.com/2023.3.1010/js/kendo.aspnetmvc.min.js"></script>
+    <script src="./kendo-ui-license.js"></script>
+</head>
+<body>
+    <nav class="container-fluid">
+        <div class="d-flex border-bottom py-2">
+            <div class="d-flex">
+                <span class="mx-0 my-auto logo">
+                    Telerik UI for ASP.NET Core
+                </span>
+            </div>
+            <div class="d-flex ml-auto nav">
+                <kendo-responsivepanel name="responsive-panel" auto-close="false" breakpoint="768" orientation="top">
+                    @(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            items.Add().Text("Home").Action("Index", "Home", new { area = "" });
+                            items.Add().Text("Form").Action("Form", "Home", new { area = "" });
+                            items.Add().Text("Grid").Action("Grid", "Home", new { area = "" });
+                            items.Add().Text("Chart").Action("Chart", "Home", new { area = "" });
+                        })
+                    )
+                </kendo-responsivepanel>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content">
+            @RenderBody()
+    </main>
+
+    <div class="footer">
+        <div class="container-fluid">
+            <div class='d-flex'>
+                <div>
+                    <div class='mb-2 links'>
+                        Terms of Use | Privacy Policy | Trademarks | License Agreements
+                    </div>
+                    <div class='copyright'>
+                        Copyright © 2020 Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.
+                    </div>
+                </div>
+                <div class='d-flex ml-auto'>
+                    <div class="social">
+                        <a href="https://www.facebook.com/Telerik/"><img src="/images/facebook.png" alt="facebook" /></a>
+                        <a href="https://twitter.com/telerik"><img src="/images/twitter.png" alt="twitter" /></a>
+                        <a href="https://www.youtube.com/user/TelerikInc">
+                            <img src="/images/youtube.png"
+                                 alt="youtube" />
+                        </a>
+                        <a href="https://www.linkedin.com/showcase/telerik/"><img src="/images/linkedin.png" alt="linkedin" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

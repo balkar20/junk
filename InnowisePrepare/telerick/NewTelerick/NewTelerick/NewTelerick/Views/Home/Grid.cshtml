@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Grid";
+}
+
+<div class="container-fluid">
+    <div class="row my-4">
+        <div class="col-12 col-lg-9 border-right">
+            @(Html.Kendo().Grid <NewTelerick.Models.ProductViewModel>()
+               .Name("grid")
+               .ToolBar(t=>t.Create())
+               .Columns(columns =>
+               {
+                   columns.Bound(p => p.ProductName);
+                   columns.Bound(p => p.Price);
+                   columns.Bound(p => p.Discontinued);
+                   columns.Bound(p => p.UnitsInStock);                   
+                   columns.Command(c =>
+                   {
+                       c.Edit();
+                       c.Destroy();
+                   });
+               })
+               .Pageable()
+               .Editable(e=>e.Mode(GridEditMode.InLine))
+               .Sortable()
+               .Scrollable()
+               .Filterable()
+               .HtmlAttributes(new { style = "height:550px;" })
+               .DataSource(dataSource => dataSource
+                   .Ajax()
+                   .Model(m=>m.Id(f=>f.ProductID))
+                   .PageSize(10)
+                   .Read(read => read.Action("Products_Read", "Grid"))
+                   .Create(create => create.Action("Products_Create", "Grid"))
+                   .Update(update => update.Action("Products_Update", "Grid"))
+                   .Destroy(destroy => destroy.Action("Products_Destroy", "Grid"))
+                )
+            )
+        </div>
+        <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+            <h3>
+                UI for ASP.NET Core Grid
+            </h3>
+            <p>
+                The Telerik UI for ASP.NET Core Grid includes a comprehensive set of ready-to-use features covering everything from paging, sorting, filtering, editing, and grouping to row and column virtualization, exporting to PDF and Excel, and accessibility support.
+            </p>
+            <p>
+                Displaying large quantities of data is trivial with the Telerik UI for ASP.NET Core Grid. It’s a feature rich component that can both handle large volumes of data with ease thanks to pagination, virtualization and infinite scrolling and visualize and manipulate it in a way it makes sense for the user. Databind your data, setup a few properties and see it work in any browser and device. We’ve taken care of every scenario you can think of so your development time is reduced tremendously to just a couple of minutes.
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+npm --init
+npm init -y
+npm i typescript -D
+tsc --init
+npm i -D @types/node
+
+add tasks.json build config in vs code
+
+node app.js
+
+install pm2
+pm2-dev app.js
+Invoke-WebRequest -Uri http://localhost:3005 -Method GET
